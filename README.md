@@ -158,7 +158,7 @@ handleSubmit() {
 ```
 
 ## Responsive UI Design
-* Splash page with responsive UI design allowing dynamic changes for better user experience on different types of devices
+* Responsive UI design allowing dynamic changes for better user experience on different types of devices
 
 ![ResponsiveUI](./readme/ingredishResponsive.gif)
 
@@ -193,7 +193,6 @@ handleSubmit() {
 
 ## Future Plans
 * Allow users to add their own recipes
-* Improve Responsive UI throughout the website
 
 
 ---
