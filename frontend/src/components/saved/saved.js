@@ -78,7 +78,7 @@ class Saved extends React.Component {
                 </div>
               ))}
             </ul>
-            <div className="backtosearch-box">
+            {/* <div className="backtosearch-box">
               <nav className="backtosearch">
                 <Link
                   className="backtosearch-text"
@@ -87,7 +87,7 @@ class Saved extends React.Component {
                   Back to Search
                 </Link>
               </nav>
-            </div>
+            </div> */}
           </div>
         </div>
       );
