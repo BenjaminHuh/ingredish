@@ -7,7 +7,8 @@ import { withRouter } from "react-router-dom";
 const mapStateToProps = state => {
     return {
         currentUser: state.session.user,
-        recipes: Object.values(state.recipes)
+        recipes: Object.values(state.recipes),
+        savedRecipes: Object.keys(state.saved_recipes)
     };
 };
 

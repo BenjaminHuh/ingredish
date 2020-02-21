@@ -97,11 +97,18 @@ class SearchPage extends React.Component {
     }
 
     handleSubmit() {
-        this.props.fetchRecipes(this.state.searchTerm).then(() =>
-            this.setState({
-                searchTerm: []
-            })
-        );
+        if (this.state.searchTerm.length === 0) {
+            document.getElementById("no-ingredients").style.display = "block";
+            setTimeout(function () {
+                document.getElementById("no-ingredients").style.display = "none";
+            }, 2000);            
+        } else {
+            this.props.fetchRecipes(this.state.searchTerm).then(() =>
+                this.setState({
+                    searchTerm: []
+                })
+            )
+        }
     }
 
     saveRecipe(recipeId) {
@@ -118,11 +125,11 @@ class SearchPage extends React.Component {
 
     render() {
         this.props.closeModal();
-
         return (
             <div>
                 <div className="searchbackground"></div>
                 <div id="note">Recipe Saved Successfully</div>
+                <div id="no-ingredients">Please add ingredients before searching for recipes &#128512;</div>
                 <div className="searchcontent">
 
                     <form className="searchform">
@@ -188,7 +195,7 @@ class SearchPage extends React.Component {
                                             <button
                                                 id={recipe.id}
                                                 type="button"
-                                                onClick={() => this.saveRecipe(recipe._id)}>Save
+                                                onClick={() => this.saveRecipe(recipe._id)}>{this.props.savedRecipes.includes(recipe._id) ? "Saved" : "Save" }
                                             </button>
                                         </div>
 

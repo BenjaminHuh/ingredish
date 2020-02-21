@@ -157,6 +157,19 @@
     z-index: 999;
 }
 
+#no-ingredients {
+    font-size: 20px;
+    position: absolute;
+    top: 22%;
+    left: calc(50% - 250px);
+    background-color: rgba(245, 245, 245, 1);
+    padding: 30px;
+    border-radius: 5px;
+    display: none;
+    border: 2px solid rgba(0, 0, 0, 1);
+    z-index: 999;
+}
+
 .recipeinfo {
     background-color: rgb(251, 247, 247);
     padding: 15px;
