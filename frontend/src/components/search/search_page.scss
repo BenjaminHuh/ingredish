@@ -44,27 +44,14 @@
 }
 
 .errors p {
-    color: white;
-    font-weight: bolder;
+    color: black;
     font-size: 15px;
     position: absolute;
     top: -65px;
-    background-color: slategray;
+    background-color: white;
     padding: 15px;
     border-radius: 5px;
-    opacity: 70%;
-
-}
-
-.errors p::after {
-    content: "";
-    position: absolute;
-    bottom: -22px;
-    left: 50px;
-    margin-left: 5px;
-    border-width: 12px;
-    border-style: solid;
-    border-color: slategray transparent transparent transparent;
+    border: 1px solid black;
 }
 
 .searchbar {
@@ -161,15 +148,13 @@
     font-size: 20px;
     position: absolute;
     top: 45%;
-    left: 45%;
-    background-color: whitesmoke;
-    opacity: 80%;
+    left: calc(50% - 135px);
+    background-color: rgba(245, 245, 245, 1);
     padding: 30px;
     border-radius: 5px;
     display: none;
-    border: white;
-    z-index: 2;
-    box-shadow: 1px 1px 1px 1px rgba(92, 84, 84, 0.671);  
+    border: 2px solid rgba(0, 0, 0, 1);
+    z-index: 999;
 }
 
 .recipeinfo {
