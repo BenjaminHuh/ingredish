@@ -13,7 +13,7 @@ class MainPage extends React.Component {
 
                 <div className="main">
                     <div>
-                        <footer className="footer">Copyright &copy; 2020 ingredish</footer>
+                        <footer className="footer">Copyright &copy; 2020 ingredish | <a href="https://github.com/benjaminhuh/ingredish#group-members" target="_blank">Meet the Devs</a></footer>
                     </div>
                 </div>
 
