@@ -8,7 +8,7 @@ class RecipeDetail extends React.Component {
         this.state = {
             comment: "",
             recipe: this.props.getRecipe(this.props.match.params.recipeId),
-            commentsToggle: true
+            // commentsToggle: true
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -32,7 +32,8 @@ class RecipeDetail extends React.Component {
         }
     }
 
-    handleSubmit() {
+    handleSubmit(e) {
+        e.preventDefault();
         this.getComments();
         this.setState({
             comment: "",
