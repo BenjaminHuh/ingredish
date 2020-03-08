@@ -17,7 +17,8 @@ class SearchPage extends React.Component {
             keywordValid: true,
             alreadyEnteredIng: false,
             SearchRes: false,
-            note: false
+            note: false,
+            help: false
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,8 +26,8 @@ class SearchPage extends React.Component {
         this.deleteIng = this.deleteIng.bind(this);
         this.saveRecipe = this.saveRecipe.bind(this);
         this.showNotification = this.showNotification.bind(this);
-
         this.props.fetchRecipes(this.state.searchTerm);
+        this.triggerHelp = this.triggerHelp.bind(this);
     }
 
     componentDidMount() {
@@ -37,6 +38,10 @@ class SearchPage extends React.Component {
         return e => {
             this.setState({ [field]: e.target.value });
         };
+    }
+
+    triggerHelp() {
+        this.setState({help: !this.state.help})
     }
 
     async getKeywordValid() {
@@ -123,6 +128,13 @@ class SearchPage extends React.Component {
         }, 1000);
     }
 
+    showErrors() {
+        document.getElementById("errors").style.display = "block";
+        setTimeout(function () {
+            document.getElementById("errors").style.display = "none";
+        }, 1000);
+    }
+
     render() {
         this.props.closeModal();
         return (
@@ -130,15 +142,20 @@ class SearchPage extends React.Component {
                 <div className="searchbackground"></div>
                 <div id="note">Recipe Saved Successfully</div>
                 <div id="no-ingredients">Please add ingredients before searching for recipes &#128512;</div>
+                {
+                 this.state.help ? <div onClick={this.triggerHelp} id="howto">Search and add each ingredients by clicking +. Then click Show me 'Recipes!' to look for recipes that include added ingredeints.</div> :
+                 null
+                }
+                
                 <div className="searchcontent">
 
                     <form className="searchform">
                         <div className="errors">
                             {!this.state.keywordValid ? (
-                                <p>Sorry! This ingredient is not found. Try "cheese"!</p>
+                                <p id="errors">Sorry! This ingredient is not found. Try "cheese"!</p>
                             ) : null}
                             {this.state.alreadyEnteredIng && this.state.keywordValid ? (
-                                <p> This ingredient has already been entered.</p>
+                                <p id="errors"> This ingredient has already been entered.</p>
                             ) : null}
                         </div>
 
@@ -150,11 +167,12 @@ class SearchPage extends React.Component {
                                 onChange={this.update("searchVal")}
                                 placeholder="Add Ingredients"
                                 required
-                                value={this.state.searchVal}
+                                value={this.state.searchVal.toLowerCase()}
                             />
                             <div onClick={this.addSearch} className="searchadd">+</div>
                         </div>
                     </form>
+                    <div onClick={this.triggerHelp}>Not sure what to do? Click here</div>
 
                     <div className="searchTerms">
                         <ul>
