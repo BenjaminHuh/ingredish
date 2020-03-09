@@ -29,7 +29,7 @@
     padding-left: 50px;
     border: 1px solid rgba(128, 128, 128, 0.575);
     border-radius: 4px;
-    box-shadow: 3px 2px 3px rgba(92, 84, 84, 0.671);  
+    // box-shadow: 3px 2px 3px rgba(92, 84, 84, 0.671);  
 }
 
 
@@ -41,7 +41,7 @@
 }
 
 .searchform ::placeholder {
-    color: rgb(248, 136, 31);
+    color: rgba(248, 136, 31, 1);
 }
 
 .searchform input:focus {
@@ -70,7 +70,7 @@
     border-radius: 4px;
     margin: 0 5px;
     border: 1px solid rgba(128, 128, 128, 0.575);
-    box-shadow: 3px 2px 3px rgba(92, 84, 84, 0.671);
+    // box-shadow: 3px 2px 3px rgba(92, 84, 84, 0.671);
     cursor: pointer;
 }
 
@@ -105,7 +105,7 @@
 .searchbutton {
     font-size: 20px;
     padding: 12px 25px;
-    box-shadow: 3px 2px 3px rgba(92, 84, 84, 0.671);
+    // box-shadow: 3px 2px 3px rgba(92, 84, 84, 0.671);
     border-radius: 5px;
     color: whitesmoke;
     background-color: rgba(255, 129, 11, 0.8);
@@ -113,6 +113,7 @@
 
 .searchbutton:hover {
     background-color: rgb(253, 122, 0);
+    cursor: pointer;
 }
 
 
@@ -140,7 +141,8 @@
     border-top-right-radius: 5px;
 }
 
-.recipes a {
+.recipes .recipeImg {
+// .recipes a {
     display: flex;
     flex-direction: column;
     color: white;
@@ -186,6 +188,9 @@
     position: relative;
 }
 
+.recipe-info-link {
+    text-decoration: none;
+}
 .recipeinfo h1 {
     font-size: 20px;
 }
@@ -201,7 +206,7 @@
     right: 10%;
     bottom: 20px;
     padding: 5px 10px;
-    box-shadow: 1px 1px 2px rgba(158, 158, 158, 0.39);
+    // box-shadow: 1px 1px 2px rgba(158, 158, 158, 0.39);
 }
 
 .recipeinfo button:hover {
