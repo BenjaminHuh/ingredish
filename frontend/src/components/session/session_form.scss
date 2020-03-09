@@ -1,7 +1,8 @@
 .title {
     font-size: 26px;
     color: white;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    // font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 400;
     margin-bottom: 8px;
 }
 
@@ -26,6 +27,14 @@
     border: none;
 }
 
+.signup-form input:hover {
+    background-color: white;
+}
+
+.signup-form input:focus {
+    background-color: white;
+}
+
 .inner-signup-form ::placeholder {
     color: rgb(80, 79, 79);
 }
@@ -35,7 +44,7 @@
 }
 
 .login-form input {
-   margin: 2px;
+    margin: 2px;
     padding: 10px;
     font-size: 15px;
     border-radius: 5px;
@@ -43,10 +52,18 @@
     border: none;
 }
 
+.login-form input:hover {
+    background-color: white;
+}
+
+.login-form input:focus {
+    background-color: white;
+}
+
 .inner-signup-form {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    // align-items: flex-end;
 }
 
 .inner-login-form {
@@ -64,7 +81,7 @@
 
 .each-error {
     color: #d43113;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    // font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin-bottom: 10px;
     opacity: 1;
     transition: opacity 0.6s;
@@ -97,6 +114,7 @@
 
 .session-buttons {
   display: flex;
+  justify-content: right;
 }
 
 .session-button {
@@ -104,7 +122,17 @@
   text-align: center;
   margin: 5px;
   cursor: pointer;
-  background-color: grey;
-  border-radius: 4px;
-  padding: 10px;
+  background-color: rgba(102, 99, 99, 0.8);
+//   border-radius: 4px;
+  padding: 12px;
+  border-color: rgba(102, 99, 99, 1);
+}
+
+.session-button:hover {
+    background-color: rgba(102, 99, 99, 0.3)
+}
+
+.login-buttons {
+    display: flex;
+    justify-content: space-evenly;
 }

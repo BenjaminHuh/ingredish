@@ -23,7 +23,7 @@
     position: relative;
 }
 
-.searchform input{
+.searchform input {
     font-size: 20px;
     padding: 10px;
     padding-left: 50px;
@@ -31,6 +31,7 @@
     border-radius: 4px;
     box-shadow: 3px 2px 3px rgba(92, 84, 84, 0.671);  
 }
+
 
 .searchform svg {
     font-size: 25px;
@@ -41,6 +42,10 @@
 
 .searchform ::placeholder {
     color: rgb(248, 136, 31);
+}
+
+.searchform input:focus {
+    background: white;
 }
 
 .errors p {
@@ -103,7 +108,7 @@
     box-shadow: 3px 2px 3px rgba(92, 84, 84, 0.671);
     border-radius: 5px;
     color: whitesmoke;
-    background-color: rgb(255, 129, 11);
+    background-color: rgba(255, 129, 11, 0.8);
 }
 
 .searchbutton:hover {
@@ -212,9 +217,24 @@ input[type=text] {
     top: 20%;
     left: calc(50% - 250px);
     width: 400px;
-    background: rgba(0,0,0,0.8);
+    background: rgba(255, 255, 255, 0.8);
+    // background: rgba(0,0,0,0.8);
     padding: 50px;
-    color: white;
+    color: black;
+    // color: white;
     border-radius: 10px;
     font-weight: 100;
+    cursor: pointer;
+    line-height: 30px;
+}
+
+.click-help {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 30px;
 }

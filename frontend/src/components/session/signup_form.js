@@ -96,7 +96,7 @@ class SignupForm extends React.Component {
               />
 
               <div className="session-buttons">
-                <button className="session-button" onClick={this.handleSubmit}>Sign Up</button>
+                <div className="session-button" onClick={this.handleSubmit}>Sign Up</div>
                 <br />
               </div>
             </div>
