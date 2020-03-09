@@ -112,10 +112,11 @@ class SearchPage extends React.Component {
             }, 2000);            
         } else {
             this.props.fetchRecipes(this.state.searchTerm).then(res => {
-
-            
-                if (res.length === 0) {
-                    alert("no results");
+                if (res.recipes.data.length === 0) {
+                    document.getElementById("no-recipes").style.display = "block";
+                    setTimeout(function () {
+                        document.getElementById("no-recipes").style.display = "none";
+                    }, 5000);
                 }
                 this.setState({
                     searchTerm: []
@@ -154,9 +155,15 @@ class SearchPage extends React.Component {
                 </video>
                 <div id="note">Recipe Saved Successfully</div>
                 <div id="no-ingredients">Please add ingredients before searching for recipes &#128512;</div>
+                <div id="no-recipes">Sorry, no recipes match all the ingredients.<br/> Try with fewer ingredients.</div>
                 {
                  this.state.help ? <div onClick={this.triggerHelp} id="howto">
-                    Welcome to ingredish where you can search recipes by ingredients! Search an ingredient and add each ingredients by clicking +. Then click 'Show me Recipes!' to look for recipes that include added ingredeints. <br/><div className="close">&times;</div></div> :
+                    Welcome to ingredish where you can search recipes by ingredients! <br/><br/>
+                    Search an ingredient and add each ingredient by clicking +. Then click 'Show me Recipes!' to look for recipes that include the added ingredeints. <br/><br/>
+                    You can also save recipes and add them to favorites by clicking 'save'. <br/><br/>
+                    Bon Appétit!
+                        <div className="close">&times;</div>
+                    </div> :
                  null
                 }
                 
