@@ -5,6 +5,9 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faMinusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchKeyword } from "../../actions/keyword_actions";
+import background from "./background_video.mp4";
+
+
 
 class SearchPage extends React.Component {
 
@@ -139,12 +142,15 @@ class SearchPage extends React.Component {
         this.props.closeModal();
         return (
             <div>
-                <div className="searchbackground"></div>
+                {/* <div className="searchbackground"></div> */}
+                <video autoPlay muted loop className="background_video">
+                    <source src={background} type="video/mp4" />
+                </video>
                 <div id="note">Recipe Saved Successfully</div>
                 <div id="no-ingredients">Please add ingredients before searching for recipes &#128512;</div>
                 {
                  this.state.help ? <div onClick={this.triggerHelp} id="howto">
-                    Welcome to ingredish where you can search recipes by ingredients! Search an ingredient and add each ingredients by clicking +. Then click Show me 'Recipes!' to look for recipes that include added ingredeints.</div> :
+                    Welcome to ingredish where you can search recipes by ingredients! Search an ingredient and add each ingredients by clicking +. Then click 'Show me Recipes!' to look for recipes that include added ingredeints. <br/><div className="close">&times;</div></div> :
                  null
                 }
                 
@@ -190,7 +196,7 @@ class SearchPage extends React.Component {
                         </ul>
                     </div>
 
-                    <button onClick={this.handleSubmit} className="searchbutton">Show Me Recipes!</button>
+                    <div onClick={this.handleSubmit} className="searchbutton">Show Me Recipes!</div>
 
                     <div className="recipes">
                         <ul>
