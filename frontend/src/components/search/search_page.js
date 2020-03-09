@@ -43,7 +43,7 @@ class SearchPage extends React.Component {
             document.getElementById("search-suggestions").innerHTML = `<div class="suggestions">Suggestions: cheese, egg, or tomato</div>`;
         }
         return e => {
-            let suggestions = [...new Set(keyValues.filter(name => name.includes(e.target.value)))].splice(0, 7);
+            let suggestions = [...new Set(keyValues.filter(name => name.includes(e.target.value.toLowerCase())))].splice(0, 7);
             let suggDiv = document.getElementById("search-suggestions")
             if (suggestions.length === 0) {
                 suggDiv.innerHTML = `<div class="suggestions">Suggestions: No ingredients found`;
@@ -72,7 +72,7 @@ class SearchPage extends React.Component {
 
     async getKeywordValid() {
         try {
-            let search = this.state.searchVal;
+            let search = this.state.searchVal.toLowerCase();
             let res = await fetchKeyword(this.state.searchVal);
 
             if (res.data && !this.state.searchTerm.some(ing => ing === search)) {
