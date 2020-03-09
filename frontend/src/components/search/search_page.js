@@ -111,10 +111,16 @@ class SearchPage extends React.Component {
                 document.getElementById("no-ingredients").style.display = "none";
             }, 2000);            
         } else {
-            this.props.fetchRecipes(this.state.searchTerm).then(() =>
+            this.props.fetchRecipes(this.state.searchTerm).then(res => {
+
+            
+                if (res.length === 0) {
+                    alert("no results");
+                }
                 this.setState({
                     searchTerm: []
                 })
+            }
             )
         }
     }
@@ -203,7 +209,7 @@ class SearchPage extends React.Component {
                             {this.props.match.path !== "/"
                                 ? this.props.recipes.map((recipe, idx) => (
                                     <div className="searched_recipe_items" key={`recipe-${idx}`}>
-                                        <Link to={`/recipe/${recipe._id}`}>
+                                        <Link className="recipeImg" to={`/recipe/${recipe._id}`}>
                                             <img
                                                 src={recipe.image_url}
                                                 className="recipeimg"
@@ -212,17 +218,20 @@ class SearchPage extends React.Component {
                                         </Link>
 
                                         <div className="recipeinfo">
-                                            <h1>{recipe.name}</h1>
-                                            {recipe.keywords.map((ing, id) => (
-                                                <li key={id}>{ing}</li>
-                                            ))}
+                                            <Link className="recipe-info-link" to={`/recipe/${recipe._id}`}>
+                                                <h1>{recipe.name}</h1>
+                                                {recipe.keywords.map((ing, id) => (
+                                                    <li key={id}>{ing}</li>
+                                                ))}
+                                            </Link>
+                                                <button
+                                                    id={recipe.id}
+                                                    type="button"
+                                                    onClick={() => this.saveRecipe(recipe._id)}>{this.props.savedRecipes.includes(recipe._id) ? "Saved" : "Save" }
+                                                </button>
+                                            </div>
+                                        
 
-                                            <button
-                                                id={recipe.id}
-                                                type="button"
-                                                onClick={() => this.saveRecipe(recipe._id)}>{this.props.savedRecipes.includes(recipe._id) ? "Saved" : "Save" }
-                                            </button>
-                                        </div>
 
                                     </div>
                                 ))
