@@ -143,7 +143,8 @@ class SearchPage extends React.Component {
                 <div id="note">Recipe Saved Successfully</div>
                 <div id="no-ingredients">Please add ingredients before searching for recipes &#128512;</div>
                 {
-                 this.state.help ? <div onClick={this.triggerHelp} id="howto">Search and add each ingredients by clicking +. Then click Show me 'Recipes!' to look for recipes that include added ingredeints.</div> :
+                 this.state.help ? <div onClick={this.triggerHelp} id="howto">
+                    Welcome to ingredish where you can search recipes by ingredients! Search an ingredient and add each ingredients by clicking +. Then click Show me 'Recipes!' to look for recipes that include added ingredeints.</div> :
                  null
                 }
                 
@@ -172,7 +173,7 @@ class SearchPage extends React.Component {
                             <div onClick={this.addSearch} className="searchadd">+</div>
                         </div>
                     </form>
-                    <div onClick={this.triggerHelp}>Not sure what to do? Click here</div>
+                    <div onClick={this.triggerHelp} className="click-help">Not sure what to do? Click here</div>
 
                     <div className="searchTerms">
                         <ul>
