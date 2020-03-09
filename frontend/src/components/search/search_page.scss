@@ -235,6 +235,7 @@ input[type=text] {
     cursor: pointer;
     line-height: 30px;
     // text-align: center;
+    z-index: 999;
 }
 
 .click-help {
@@ -246,4 +247,9 @@ input[type=text] {
     position: absolute;
     top: 10px;
     right: 30px;
+}
+
+.suggestions {
+    color: white;
+    margin: 10px;
 }

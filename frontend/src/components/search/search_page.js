@@ -6,7 +6,7 @@ import { faMinusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchKeyword } from "../../actions/keyword_actions";
 import background from "./background_video.mp4";
-
+import keywords from "./keywords.json";
 
 
 class SearchPage extends React.Component {
@@ -38,10 +38,35 @@ class SearchPage extends React.Component {
     }
 
     update(field) {
+        let keyValues = keywords.map(obj => obj.name);
+        if (this.state.searchVal === "" && document.getElementById("search-suggestions")) {
+            document.getElementById("search-suggestions").innerHTML = `<div class="suggestions">Suggestions: cheese, egg, or tomato</div>`;
+        }
         return e => {
+            let suggestions = [...new Set(keyValues.filter(name => name.includes(e.target.value)))].splice(0, 7);
+            let suggDiv = document.getElementById("search-suggestions")
+            if (suggestions.length === 0) {
+                suggDiv.innerHTML = `<div class="suggestions">Suggestions: No ingredients found`;
+            }else {
+                suggDiv.innerHTML = `<div class="suggestions">Suggestions: `
+                suggestions.map((term, i) => {
+                    if (suggestions.length === 0) {
+                        suggDiv.innerHTML = `<div class="suggestions">Suggestions: No ingredients found`
+                    }else if (i !== suggestions.length - 1) {
+                        suggDiv.children[0].innerHTML += `${term}, `
+                    }else if (suggestions.length !== 1){
+                        suggDiv.children[0].innerHTML += `or ${term}`
+                    }else {
+                        suggDiv.children[0].innerHTML += `${term}`
+                    }
+                })
+                suggDiv.innerHTML += `</div>`
+            }
             this.setState({ [field]: e.target.value });
         };
     }
+
+    //[...new Set(keyValues.filter(name => name.includes("as")))]
 
     triggerHelp() {
         this.setState({help: !this.state.help})
@@ -79,6 +104,9 @@ class SearchPage extends React.Component {
             searchVal: "",
             SearchRes: true
         });
+        // debugger
+        document.getElementById("search").value = "";
+        this.update("searchVal");
     }
 
     deleteIng(value) {
@@ -147,6 +175,7 @@ class SearchPage extends React.Component {
 
     render() {
         this.props.closeModal();
+        // debugger
         return (
             <div>
                 {/* <div className="searchbackground"></div> */}
@@ -156,6 +185,7 @@ class SearchPage extends React.Component {
                 <div id="note">Recipe Saved Successfully</div>
                 <div id="no-ingredients">Please add ingredients before searching for recipes &#128512;</div>
                 <div id="no-recipes">Sorry, no recipes match all the ingredients.<br/> Try with fewer ingredients.</div>
+                {/* <div id="errors">Sorry! This ingredient is not found. Try "cheese"!</div> */}
                 {
                  this.state.help ? <div onClick={this.triggerHelp} id="howto">
                     Welcome to ingredish where you can search recipes by ingredients! <br/><br/>
@@ -172,7 +202,7 @@ class SearchPage extends React.Component {
                     <form className="searchform">
                         <div className="errors">
                             {!this.state.keywordValid ? (
-                                <p id="errors">Sorry! This ingredient is not found. Try "cheese"!</p>
+                                <p id="errors">Sorry! This ingredient is not found. Try "cheese", "egg", or "tomato"!</p>
                             ) : null}
                             {this.state.alreadyEnteredIng && this.state.keywordValid ? (
                                 <p id="errors"> This ingredient has already been entered.</p>
@@ -192,8 +222,8 @@ class SearchPage extends React.Component {
                             <div onClick={this.addSearch} className="searchadd">+</div>
                         </div>
                     </form>
+                    <div id="search-suggestions"></div>
                     <div onClick={this.triggerHelp} className="click-help">Not sure what to do? Click here</div>
-
                     <div className="searchTerms">
                         <ul>
                             {this.state.searchTerm
