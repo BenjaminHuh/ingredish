@@ -20,6 +20,15 @@ router.get("/", async (req, res) => {
     }
 });
 
+// router.get("/", async (req, res) => {
+//     try {
+//         Keyword.find({}, {"_id": 0}).then(keywords => res.json(keywords));
+//     }
+//     catch (err) {
+//         res.status(500).send(err.message);
+//     }
+// })
+
 router.post(
     "/",
     (req, res) => {

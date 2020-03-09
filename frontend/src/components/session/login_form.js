@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import "./session_form.scss";
-import egg from "../../images/egg1.png";
+// import egg from "../../images/egg1.png";
 
 class LoginForm extends React.Component {
   constructor(props) {
