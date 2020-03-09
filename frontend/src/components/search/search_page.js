@@ -66,8 +66,6 @@ class SearchPage extends React.Component {
         };
     }
 
-    //[...new Set(keyValues.filter(name => name.includes("as")))]
-
     triggerHelp() {
         this.setState({help: !this.state.help})
     }
@@ -104,7 +102,6 @@ class SearchPage extends React.Component {
             searchVal: "",
             SearchRes: true
         });
-        // debugger
         document.getElementById("search").value = "";
         this.update("searchVal");
     }
@@ -175,17 +172,14 @@ class SearchPage extends React.Component {
 
     render() {
         this.props.closeModal();
-        // debugger
         return (
             <div>
-                {/* <div className="searchbackground"></div> */}
                 <video autoPlay muted loop className="background_video">
                     <source src={background} type="video/mp4" />
                 </video>
                 <div id="note">Recipe Saved Successfully</div>
                 <div id="no-ingredients">Please add ingredients before searching for recipes &#128512;</div>
                 <div id="no-recipes">Sorry, no recipes match all the ingredients.<br/> Try with fewer ingredients.</div>
-                {/* <div id="errors">Sorry! This ingredient is not found. Try "cheese"!</div> */}
                 {
                  this.state.help ? <div onClick={this.triggerHelp} id="howto">
                     Welcome to ingredish where you can search recipes by ingredients! <br/><br/>
