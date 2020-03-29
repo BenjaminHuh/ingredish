@@ -40,6 +40,17 @@
     color: black;
 }
 
+
+.recipe-name_save {
+    display: flex;
+}
+
+.recipe-save {
+    margin-top: 50px;
+    padding: 15px;
+    cursor: pointer;
+}
+
 .recipe-nutrition {
     padding: 5px;
     font-size: 13px;

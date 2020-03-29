@@ -11,6 +11,10 @@ class RecipeDetail extends React.Component {
             // commentsToggle: true
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.saveRecipe = this.saveRecipe.bind(this);
+    }
+    componentDidMount() {
+        this.props.getSavedRecipes(this.props.currentUser);
     }
 
     update(field) {
@@ -41,6 +45,10 @@ class RecipeDetail extends React.Component {
         });
     }
 
+    saveRecipe(recipeId) {
+        this.props.saveRecipe(this.props.currentUser, recipeId);
+    }
+
     render() {
         const { recipe } = this.props;
         return (
@@ -58,7 +66,14 @@ class RecipeDetail extends React.Component {
                                     width="100%"
                                     alt="recipe-img"
                                 />
-                                <div className="recipe-name">{recipe.name}</div>
+                                <div className="recipe-name_save">
+                                    <div className="recipe-name">{recipe.name}</div>
+                                    <div
+                                        className="recipe-save"
+                                        id={recipe.id}
+                                        onClick={() => this.saveRecipe(recipe._id)}>{this.props.savedRecipes.includes(recipe._id) ? "Favorite" : "Save" }
+                                    </div>
+                                </div>
                                 <div className="recipe-nutrition">
                                     {recipe.nutrition_facts}
                                 </div>
