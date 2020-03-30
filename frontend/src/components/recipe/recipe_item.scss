@@ -118,3 +118,8 @@ input[type=textarea] {
     background-color: transparent;
     border-bottom: 2px solid
 }
+
+.comments-box > h2 {
+    font-style: italic;
+    color: rgba(0, 0, 0, 0.7);
+}
