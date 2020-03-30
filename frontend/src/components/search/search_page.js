@@ -143,9 +143,9 @@ class SearchPage extends React.Component {
                         document.getElementById("no-recipes").style.display = "none";
                     }, 5000);
                 }
-                this.setState({
-                    searchTerm: []
-                })
+                // this.setState({
+                //     searchTerm: []
+                // })
             }
             )
         }
