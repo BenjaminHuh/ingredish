@@ -96,6 +96,7 @@ class RecipeDetail extends React.Component {
 
                                 <div className="comments-box">
                                     <h1 className="comments">Comments</h1>
+                                    <h2>For your honest opinions, we keep the comments anonymous!</h2>
                                     {this.state.commentsToggle ? (
                                         <ul>
                                             {recipe.comments.length !== 0
@@ -129,8 +130,7 @@ class RecipeDetail extends React.Component {
 
                                 <div className="backtosearch-box">
                                     <nav className="backtosearch">
-                                        <div
-                                            
+                                         <div  
                                             onClick={()=>this.props.history.goBack() }>
                                             Back to Search Results
                                         </div>
