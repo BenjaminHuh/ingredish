@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { faThList } from "@fortawesome/free-solid-svg-icons";
-import "./saved_search_page.scss";
+import "./search_page.scss";
 import background from "./background_video.mp4";
 
 

@@ -129,16 +129,11 @@ class RecipeDetail extends React.Component {
 
                                 <div className="backtosearch-box">
                                     <nav className="backtosearch">
-                                        {/* <Link
+                                        <Link
                                             className="backtosearch-text"
-                                            to={{ pathname: "/search" }}
-                                        // to={{pathname: this.props.history.goBack()}}
-                                        >
+                                            to={{ pathname: "/search" }}>
                                             Back to Search
-                                        </Link> */}
-                                        <div onClick={()=>this.props.history.goBack()}>
-                                            Back To Search Results
-                                        </div>
+                                        </Link>
                                     </nav>
                                 </div>
                                 
