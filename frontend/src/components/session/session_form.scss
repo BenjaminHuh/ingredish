@@ -1,0 +1,138 @@
+.title {
+    font-size: 26px;
+    color: white;
+    // font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    
+}
+
+.signup-form input {
+    margin: 2px;
+    padding: 10px;
+    font-size: 17px;
+    border-radius: 5px;
+    background-color:  rgba(255, 255, 255, 0.466);
+    border: none;
+}
+
+.signup-form input:hover {
+    background-color: white;
+}
+
+.signup-form input:focus {
+    background-color: white;
+}
+
+.inner-signup-form ::placeholder {
+    color: rgb(80, 79, 79);
+}
+
+.inner-login-form ::placeholder {
+    color: rgb(80, 79, 79);
+}
+
+.login-form input {
+    margin: 2px;
+    padding: 10px;
+    font-size: 17px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.466);
+    border: none;
+}
+
+.login-form input:hover {
+    background-color: white;
+}
+
+.login-form input:focus {
+    background-color: white;
+}
+
+.inner-signup-form {
+    display: flex;
+    flex-direction: column;
+    // align-items: flex-end;
+}
+
+.inner-login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.submit {
+    cursor: pointer; 
+}
+.error-list {
+    width: 225px;
+}
+
+.each-error {
+    color: #d43113;
+    // font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-bottom: 10px;
+    opacity: 1;
+    transition: opacity 0.6s;
+}
+
+.each-error {
+    animation: shake 0.88s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+@keyframes shake {
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    
+    20%, 80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%, 60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+.session-buttons {
+  display: flex;
+  justify-content: right;
+}
+
+.session-button {
+  color: white;
+  text-align: center;
+  margin: 5px;
+  cursor: pointer;
+  background-color: rgba(102, 99, 99, 0.8);
+//   border-radius: 4px;
+  padding: 12px;
+  border-color: rgba(102, 99, 99, 1);
+}
+
+.session-button:hover {
+    background-color: rgba(102, 99, 99, 0.3)
+}
+
+.login-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
