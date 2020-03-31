@@ -8,7 +8,6 @@ import RecipeDetailContainer from "./recipe/recipe_detail_container";
 import Modal from "./modal/modal";
 import RecipeItem from "./recipe/recipe_item";
 import SavedContainer from "./saved/saved_container";
-import SavedSearchContainer from "./search/saved_search_container";
 import "../index.css";
 
 const App = () => (
@@ -23,8 +22,8 @@ const App = () => (
       />
       <ProtectedRoute exact path="/favorites" component={SavedContainer} />
       <ProtectedRoute exact path="/search" component={SearchPageContainer} />
+      <ProtectedRoute exact path="/search/:savedTerm" component={SearchPageContainer} />
       <AuthRoute exact path="/" component={MainPage} />
-      <ProtectedRoute exact path="/search/:savedTerm" component={SavedSearchContainer} />
     </Switch>
   </div>
 );

@@ -49,6 +49,9 @@ class Saved extends React.Component {
                 >
                   Back to Search
                 </Link>
+                {/* <div onClick={() => this.props.history.goBack()}>
+                  Back to Search Results
+                </div> */}
               </nav>
             </div>
 
