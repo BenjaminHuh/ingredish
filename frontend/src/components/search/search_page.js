@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import "./search_page.scss";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faMinusCircle } from "@fortawesome/free-solid-svg-icons";
@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchKeyword } from "../../actions/keyword_actions";
 import background from "./background_video.mp4";
 import keywords from "./keywords.json";
-import SavedSearch from './saved_search';
 
 class SearchPage extends React.Component {
   constructor(props) {
@@ -20,7 +19,8 @@ class SearchPage extends React.Component {
       alreadyEnteredIng: false,
       SearchRes: false,
       note: false,
-      help: false
+      help: false,
+      savedTerm: this.props.match.params.savedTerm
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,12 +32,13 @@ class SearchPage extends React.Component {
     this.triggerHelp = this.triggerHelp.bind(this);
   }
 
-  componentDidUpdate(prevProps) {
-    console.log('prevProps',prevProps);
-  }
   componentDidMount() {
     this.props.getSavedRecipes(this.props.currentUser);
-    // this.props.fetchRecipes(this.state.searchTerm);
+    let terms = [];
+    if (this.state.savedTerm) {
+      terms = this.state.savedTerm.split(",");
+      this.props.fetchRecipes(terms);
+    }
   }
 
   update(field) {
@@ -127,19 +128,19 @@ class SearchPage extends React.Component {
     }
   }
 
-  async returnRecipe() {
-    try {
-      let recipes = await this.props.fetchRecipes(this.state.searchTerm);
+  // async returnRecipe() {
+  //   try {
+  //     let recipes = await this.props.fetchRecipes(this.state.searchTerm);
 
-      if (recipes.recipes.data.length !== 0) {
-        this.setState({
-          SearchRes: true
-        });
-      }
-    } catch (err) {
-      console.log(err.message);
-    }
-  }
+  //     if (recipes.recipes.data.length !== 0) {
+  //       this.setState({
+  //         SearchRes: true
+  //       });
+  //     }
+  //   } catch (err) {
+  //     console.log(err.message);
+  //   }
+  // }
 
   handleSubmit() {
     if (this.state.searchTerm.length === 0) {
@@ -148,16 +149,13 @@ class SearchPage extends React.Component {
         document.getElementById("no-ingredients").style.display = "none";
       }, 2000);
     } else {
-        
       this.props.fetchRecipes(this.state.searchTerm).then(res => {
-      
         if (res.recipes.data.length === 0) {
           document.getElementById("no-recipes").style.display = "block";
-          setTimeout(function () {
+          setTimeout(function() {
             document.getElementById("no-recipes").style.display = "none";
           }, 5000);
-        }
-        else {
+        } else {
           this.props.history.push(`/search/${this.state.searchTerm}`);
         }
       });
@@ -266,12 +264,51 @@ class SearchPage extends React.Component {
           <div onClick={this.handleSubmit} className="searchbutton">
             Show Me Recipes!
           </div>
-          {this.props.recipes && this.state.searchTerm.length !=0  ?
-            <SavedSearch searchTerm={this.state.searchTerm}/> : null}
+          <div className="recipes">
+            <ul>
+              {this.props.recipes
+                ? this.props.recipes.map((recipe, idx) => (
+                    <div
+                      className="searched_recipe_items"
+                      key={`recipe-${idx}`}
+                    >
+                      <Link className="recipeImg" to={`/recipe/${recipe._id}`}>
+                        <img
+                          src={recipe.image_url}
+                          className="recipeimg"
+                          alt="recipe"
+                        />
+                      </Link>
+
+                      <div className="recipeinfo">
+                        <Link
+                          className="recipe-info-link"
+                          to={`/recipe/${recipe._id}`}
+                        >
+                          <h1>{recipe.name}</h1>
+                          {recipe.keywords.map((ing, id) => (
+                            <li key={id}>{ing}</li>
+                          ))}
+                        </Link>
+                        <button
+                          id={recipe.id}
+                          type="button"
+                          onClick={() => this.saveRecipe(recipe._id)}
+                        >
+                          {this.props.savedRecipes.includes(recipe._id)
+                            ? "Saved"
+                            : "Save"}
+                        </button>
+                      </div>
+                    </div>
+                  ))
+                : null}
+            </ul>
+          </div>
         </div>
       </div>
     );
   }
 }
 
-export default SearchPage;
+export default withRouter(SearchPage);
