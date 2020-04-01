@@ -1,5 +1,5 @@
 import React from "react";
-import {  withRouter } from 'react-router-dom';
+import {  Link, withRouter } from 'react-router-dom';
 import showBg from "../../images/cuttingboard.jpeg";
 
 class RecipeDetail extends React.Component {
