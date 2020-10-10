@@ -195,7 +195,7 @@ handleSubmit() {
 * Allow users to add their own recipes
 
 
----
+<!-- ---
 ## Group Members
 
 Anne Wong &nbsp;&nbsp;
@@ -209,4 +209,4 @@ Nandhu Kuppusamy &nbsp;&nbsp;
 
 Noel Seo &nbsp;&nbsp;
 [<img src="./readme/github.png" width="30" align=center>](https://github.com/noelseo) 
-
+ -->
